@@ -14,8 +14,8 @@ install typescript global
 * test4 (class 面向对象编程)
 * test5 (interface+class)
 * test6 (解构数组和对象)
-
 * test7 (展开数组和对象)
+
 * test8 (interface和class的关系)
 * test9 (函数)
 
