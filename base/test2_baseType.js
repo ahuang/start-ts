@@ -40,7 +40,7 @@ console.log(arr1); // [ 'a', 'b' ]
 console.log(arr2); // [ 1, 2, 3 ]
 console.log("------");
 // tuple 元组
-// 特殊的数组 定义了类型和数目的数组
+// 特殊的数组 定义了类型和数目的数组(指定每个元素的类型)
 var tp1 = [1, 'abc'];
 var tp2 = [1, 'abc', ''];
 tp2[2] = 'x';
@@ -101,7 +101,6 @@ console.log(empty2); //  null
 console.log("------");
 // <>
 // 类型断言，表示程序员非常确认类型，可以实现类型自动转化
-console.log('undefined null');
 var verysure = 'very sure type';
 var verysureLength = verysure.length;
 console.log('<>');

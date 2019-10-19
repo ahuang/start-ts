@@ -8,10 +8,6 @@ interface
 */
 
 
-
-
-
-
 /*
 例子1 属性检查
 interface用来定义一种数据结构，它包含一些属性和属性类型，服务于类型检查。
@@ -70,13 +66,6 @@ createSquare({color: 'red', opactiy: 0.5} as SquareConfig);  //  { color: 'red',
 // compile error: 'colr' does not exist in type 'SquareConfig'. Did you mean to write 'color'?
 // createSquare({colr: 'red', width: 0.5}); 
 console.log('------');
-
-
-
-
-
-
-
 
 
 

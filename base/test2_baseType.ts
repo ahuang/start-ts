@@ -45,7 +45,7 @@ console.log(`------`);
 
 
 // tuple 元组
-// 特殊的数组 定义了类型和数目的数组
+// 特殊的数组 定义了类型和数目的数组(指定每个元素的类型)
 let tp1: [number, string] = [1,'abc'];
 let tp2: [number, string, string] = [1,'abc', ''];
 tp2[2] = 'x';
@@ -109,7 +109,6 @@ console.log(`------`);
 
 // <>
 // 类型断言，表示程序员非常确认类型，可以实现类型自动转化
-console.log('undefined null');
 let verysure: any = 'very sure type';
 let verysureLength: number = (<string>verysure).length;
 console.log('<>');

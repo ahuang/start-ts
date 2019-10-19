@@ -8,9 +8,8 @@ install typescript global
 
 # 例子
 * test1 (编译过程)
-* test2 (类型校验)
-* test3 (基本类型)
-
+* test1 (类型校验)
+* test2 (基本类型)
 * test3 (interface 自定义类型)
 * test4 (class 面向对象编程)
 * test5 (各种基础类型)
