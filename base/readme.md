@@ -15,9 +15,7 @@ install typescript global
 * test5 (interface+class)
 * test6 (解构数组和对象)
 * test7 (展开数组和对象)
-
-* test8 (interface和class的关系)
-* test9 (函数)
+* test8 (函数)
 
 
 
