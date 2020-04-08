@@ -6,5 +6,5 @@ exports.__esModule = true;
 function greeter(person) {
     return "hello: " + person;
 }
-var user = "Jane";
+var user = "JaneBaby";
 console.log(greeter(user));

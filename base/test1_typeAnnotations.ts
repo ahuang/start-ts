@@ -1,5 +1,7 @@
 /*
-topic: （type annotations 类型校验)
+topic: （type annotations 类型校验) 
+annotations: 注解,note,comment,remark....
+
 校验传参类型和传参数目
 注意：即使出现编译error，编译还是会完成
 */

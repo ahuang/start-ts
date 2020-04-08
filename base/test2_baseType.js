@@ -44,6 +44,7 @@ console.log("------");
 var tp1 = [1, 'abc'];
 var tp2 = [1, 'abc', ''];
 tp2[2] = 'x';
+// tp2[3] = 'y'; // tuple定义后，不能再新增元素
 console.log("tuple");
 console.log(tp1); // [ 1, 'abc' ]
 console.log(tp2); // [ 1, 'abc', 'x' ]
@@ -106,4 +107,36 @@ var verysureLength = verysure.length;
 console.log('<>');
 console.log(verysure); // very sure type
 console.log(verysureLength); // 14
+console.log("------");
+// 泛型 Generics
+// 定义函数、接口或类时，不预先指定具体类型，在使用时再指定类型的一种特性
+// 没使用泛型：生成长度为n，默认值为v的数组
+function genArray(n, v) {
+    var result = [];
+    for (var i = 0; i < n; i++) {
+        result[i] = v;
+    }
+    return result;
+}
+// 使用泛型 相同概念
+// 函数名后添加 <T>用来定义任意输入类型，然后在参数v和返回值类型使用了T
+function genArray1(n, v) {
+    var result = [];
+    for (var i = 0; i < n; i++) {
+        result[i] = v;
+    }
+    return result;
+}
+console.log('泛型 Generics');
+console.log(genArray(3, 'x')); // [ 'x', 'x', 'x' ]
+console.log(genArray1(3, 100)); // 显示指定泛型类型 [ 100, 100, 100 ]
+console.log(genArray1(3, true)); // 没有显示置顶 ts能类型推论 [ true, true, true ]
+// 使用泛型：多参数
+function gen2(a) {
+    return {
+        x: a[0],
+        y: a[1]
+    };
+}
+console.log(gen2(['abc', 123])); // { x: 'abc', y: 123 }
 console.log("------");

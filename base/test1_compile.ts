@@ -2,10 +2,10 @@
 topic: (compile 编译)
 */
 
-function greeter(person){
+function greeter(person: String){
     return "hello: " + person;
 }
-let user = "Jane";
+let user = "JaneBaby";
 
 console.log(greeter(user));
 
