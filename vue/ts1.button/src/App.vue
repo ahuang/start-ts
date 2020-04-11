@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <MyBtn/>
+    <test1/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import MyBtn from './components/my-btn.vue';
+import test1 from '@/views/test1.vue';
 
 @Component({
   components: {
-    MyBtn,
+    test1,
   },
 })
 export default class App extends Vue {}
