@@ -16,3 +16,4 @@ npm run serve
 npm run build
 ```
 
+@/start-ts/vue/ts1.button/src/views/test1.vue button组件 开始使用ts
