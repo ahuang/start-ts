@@ -16,4 +16,6 @@ print(data);
 // print:  {"loading":false,"name":"abc","age":10}
 
 
-export {}
+export {
+    print
+}

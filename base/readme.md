@@ -2,9 +2,15 @@
 install typescript global  
 `sudo npm install -g typescript`
 
-# 执行
+# 编译
 `tsc test1.ts`  
-`node test1.js`
+
+# 编译并生成d.ts文件
+`tsc -d test12_often.ts`  
+
+
+# 执行
+`node test1.js` 
 
 # 例子
 * test1 (编译过程)
@@ -16,6 +22,7 @@ install typescript global
 * test6 (解构数组和对象)
 * test7 (展开数组和对象)
 * test8 (函数)
+* test12 (常用语法)
 
 
 
