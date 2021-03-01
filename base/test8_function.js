@@ -5,7 +5,7 @@ var myAdd1 = function (x, y) {
     return x + y;
 };
 // myAdd2是myAdd1的完整写法
-// (x: number, y: number) => number 这是一个整体， 表示myAdd2的类型是函数
+// (x: number, y: number) => number 这是个整体， 表示myAdd2的类型是函数
 var myAdd2 = function (x, y) {
     return x + y;
 };
@@ -37,12 +37,12 @@ function buildTopMovies(firstMovie) {
     for (var _i = 1; _i < arguments.length; _i++) {
         restMovies[_i - 1] = arguments[_i];
     }
-    console.log("restMovies " + restMovies);
-    console.log("restMovies " + Object.prototype.toString.call(restMovies));
+    console.log("restMovies " + restMovies); // restMovies 美丽心灵,阿甘正传
+    console.log("restMovies " + Object.prototype.toString.call(restMovies)); //restMovies [object Array]
     return firstMovie + ", " + restMovies.join(", ");
 }
 var top3Movies = buildTopMovies('黑客帝国', '美丽心灵', '阿甘正传');
-console.log("top3Movies: " + top3Movies);
+console.log("top3Movies: " + top3Movies); // top3Movies: 黑客帝国, 美丽心灵, 阿甘正传
 console.log('--- 函数重载 ---');
 function addAll(x) {
     if (x instanceof Array) {
@@ -52,5 +52,45 @@ function addAll(x) {
         return x.name + "," + x.age;
     }
 }
-console.log("\u53C2\u6570\u4E3Aarray: " + addAll([1, 2, 3]));
-console.log("\u53C2\u6570\u4E3Aobject: " + addAll({ name: 'haha', age: 19 }));
+console.log("\u53C2\u6570\u4E3Aarray: " + addAll([1, 2, 3])); // 参数为array: 1,2,3
+console.log("\u53C2\u6570\u4E3Aobject: " + addAll({ name: 'haha', age: 19 })); // 参数为object: haha,19
+// console.log(`参数为object: ${addAll('123test')}`); // error  No overload matches this call
+/*
+例子3:
+    getName返回普通函数，ts属于严格模式，myName调用者是undefined
+    getEmail返回箭头函数，父函数是普通函数getEmail，getEmail调用这是user，因此getEmail定义这作用域是user
+*/
+var user = {
+    name: 'haha',
+    email: 'haha@123.com',
+    getName: function () {
+        return function () {
+            console.log("getName this: ", this);
+            return "name is " + (this && this.name);
+        };
+    },
+    getEmail: function () {
+        var _this = this;
+        return function () {
+            console.log("getEmail this: ", _this);
+            return "email is " + _this.email;
+        };
+    }
+};
+var myName = user.getName();
+// getName this: window
+console.log("myName is " + myName()); // myName is name is undefined
+var myEmail = user.getEmail();
+// getEmail this: user
+console.log("myEmail is " + myEmail()); // myEmail is email is haha@123.com
+var food = {
+    fruit: 'orange',
+    getFruit: function () {
+        var _this = this;
+        return function () {
+            return "fruit is " + _this.fruit;
+        };
+    }
+};
+var myFruit = food.getFruit();
+console.log("myFruit is " + myFruit()); // myFruit is fruit is orange

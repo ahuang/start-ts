@@ -1,8 +1,4 @@
 
-
-
-
-
 console.log('---  函数的完整写法 ---');
 let myAdd1 = function(x: number, y: number) :number {
     return x+y;
@@ -70,45 +66,52 @@ console.log(`参数为object: ${addAll({name:'haha', age: 19})}`); // 参数为o
 
 
 
-// /*
-// 例子3: this参数 不是完全懂...
-//     getName返回的是普通函数，this指向调用者，也就是window
-//     getEmail返回的是箭头函数，this指向定义者，也就是user 
-//     getFruit返回的是箭头函数，并且父函数指定了this为food
-// */
-// let user = {
-//     name: 'haha',
-//     email: 'haha@123.com',
-//     getName: function() {
-//         return function() {
-//             return `name is ${this.name}`;
-//         }
-//     },
-//     getEmail: function() {
-//         return () => {
-//             return `email is ${this.email}`;
-//         }
-//     }
-// }
-// let myName = user.getName(); 
-// console.log(`myName is ${myName()}`); // myName is name is undefined
-// let myEmail = user.getEmail();
-// console.log(`myEmail is ${myEmail()}`); // myEmail is email is haha@123.com
+/*
+例子3: 
+    getName返回普通函数，ts属于严格模式，myName调用者是undefined
+    getEmail返回箭头函数，父函数是普通函数getEmail，getEmail调用这是user，因此getEmail定义这作用域是user 
+*/
+let user = {
+    name: 'haha',
+    email: 'haha@123.com',
+    getName: function() {
+        return function() {
+            console.log(`getName this: `, this)
+            return `name is ${this && this.name}`;
+        }
+    },
+    getEmail: function() {
+        return () => {
+            console.log(`getEmail this: `, this)
+            return `email is ${this.email}`;
+        }
+    }
+}
+let myName = user.getName(); 
+// getName this: undefined
+console.log(`myName is ${myName()}`); // myName is name is undefined
 
-// interface food {
-//     fruit: string,
-//     getFruit(this: food): () => string
-// }
-// let food = {
-//     fruit: 'orange',
-//     getFruit: function(this: food) {
-//         return () => {
-//             return `fruit is ${this.fruit}`;
-//         }
-//     }
-// };
-// let myFruit = food.getFruit();
-// console.log(`myFruit is ${myFruit()}`); // myFruit is fruit is orange
+let myEmail = user.getEmail();
+// getEmail this: user
+console.log(`myEmail is ${myEmail()}`); // myEmail is email is haha@123.com
+
+
+
+// 同getEmail箭头函数，getFruit返回的是箭头函数，并且父函数指定了this为food 
+interface food {
+    fruit: string,
+    getFruit(this: food): () => string
+}
+let food = {
+    fruit: 'orange',
+    getFruit: function(this: food) {
+        return () => {
+            return `fruit is ${this.fruit}`;
+        }
+    }
+};
+let myFruit = food.getFruit();
+console.log(`myFruit is ${myFruit()}`); // myFruit is fruit is orange
 
 
 
